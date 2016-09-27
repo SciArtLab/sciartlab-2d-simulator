@@ -5,14 +5,16 @@ import processing.core.PApplet
 class Game extends PApplet{
 
     GlobalSpace global
+    boolean paused = false
 
     static void main(String[] args){
         args = new String[1]
         args[0]="com.xmunch.game.Game"
         PApplet.main(args)
 
-        args[0]="com.xmunch.game.Board"
-        PApplet.main(args)
+        //          TODO: Uncomment
+        //        args[0]="com.xmunch.game.Board"
+        //        PApplet.main(args)
     }
 
     @Override
@@ -28,16 +30,23 @@ class Game extends PApplet{
         frameRate(Constants.FRAME_RATE)
         global = GlobalSpace.getInstance(this, Constants.FULL_SCREEN_DEFAULT)
         global.setup()
+        smooth()
     }
 
     @Override
     void draw() {
-        global.draw()
+        if(!paused){
+            global.drawWorld()
+            global.drawNeighborsInfo()
+        }
     }
 
     @Override
     void keyPressed() {
-        if(keyCode == UP)
+
+        if(keyCode == Constants.KEY_SPACE){
+            paused = !paused
+        }else if(keyCode == UP)
             global.getPlayer().moveUp()
         else if(keyCode == DOWN)
             global.getPlayer().moveDown()
