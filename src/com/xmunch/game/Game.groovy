@@ -10,13 +10,15 @@ class Game extends PApplet{
         args = new String[1]
         args[0]="com.xmunch.game.Game"
         PApplet.main(args)
+
+        args[0]="com.xmunch.game.Board"
+        PApplet.main(args)
     }
 
     @Override
     void settings() {
         if(!Constants.FULL_SCREEN_DEFAULT){
-            size(Constants.WIDTH, Constants.HEIGHT, P3D)
-            frame.setResizable(true)
+            size(Constants.WIDTH, Constants.HEIGHT)
         } else
             fullScreen()
     }
