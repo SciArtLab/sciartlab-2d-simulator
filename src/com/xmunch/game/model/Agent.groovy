@@ -1,5 +1,7 @@
 package com.xmunch.game.model
 
+import processing.core.PImage
+
 import com.xmunch.game.Constants
 
 
@@ -15,10 +17,20 @@ public class Agent extends PObject {
     }
 
     void draw() {
-        game.strokeWeight(1)
-        game.stroke(0,235,0)
-        game.fill(0,50,0)
-        game.rect(x, y, width, height)
+
+        if(global.getShowAgents()){
+
+            if(global.getShowSprites()){
+                PImage img = global.getGame().loadImage("pillbug.png")
+                global.getGame().image(img, x, y, width, height)
+            } else {
+                game.strokeWeight(1)
+                game.stroke(0,235,0)
+                game.fill(0,50,0)
+                game.rect(x, y, width, height)
+            }
+        }
+
         moveRandomly()
     }
 

@@ -16,9 +16,21 @@ public class Player extends Agent {
     }
 
     void draw() {
-        game.strokeWeight(1)
-        game.stroke(100,110,255)
-        game.fill(50,60,60)
-        game.rect(x,y,width,height)
+        if(global.getShowAgents()){
+
+            if(global.getShowSprites()){
+
+                game.strokeWeight(1)
+                game.stroke(0,0,255)
+                game.fill(0,0,255)
+                game.rect(x,y,width,height)
+            } else {
+
+                game.strokeWeight(1)
+                game.stroke(100,110,255)
+                game.fill(50,60,60)
+                game.rect(x,y,width,height)
+            }
+        }
     }
 }

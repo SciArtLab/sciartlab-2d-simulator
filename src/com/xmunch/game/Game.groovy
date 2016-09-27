@@ -5,7 +5,6 @@ import processing.core.PApplet
 class Game extends PApplet{
 
     GlobalSpace global
-    boolean paused = false
 
     static void main(String[] args){
         args = new String[1]
@@ -35,17 +34,29 @@ class Game extends PApplet{
 
     @Override
     void draw() {
-        if(!paused){
+        if(!global.getPaused()){
             global.drawWorld()
-            global.drawNeighborsInfo()
+
+            if(global.getShowNeighborsInfo())
+                global.drawNeighborsInfo()
         }
     }
 
     @Override
     void keyPressed() {
 
+        println keyCode
+
         if(keyCode == Constants.KEY_SPACE){
-            paused = !paused
+            global.setPaused(!global.getPaused())
+        }else if(keyCode == Constants.KEY_G){
+            global.setShowGrid(!global.getShowGrid())
+        }else if(keyCode == Constants.KEY_N){
+            global.setShowNeighborsInfo(!global.getShowNeighborsInfo())
+        }else if(keyCode == Constants.KEY_A){
+            global.setShowAgents (!global.getShowAgents())
+        }else if(keyCode == Constants.KEY_S){
+            global.setShowSprites(!global.getShowSprites())
         }else if(keyCode == UP)
             global.getPlayer().moveUp()
         else if(keyCode == DOWN)

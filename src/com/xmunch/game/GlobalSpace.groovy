@@ -1,6 +1,7 @@
 package com.xmunch.game
 
 import processing.core.PApplet
+import processing.core.PImage
 
 import com.xmunch.game.model.Agent
 import com.xmunch.game.model.Cursor
@@ -8,11 +9,19 @@ import com.xmunch.game.model.GridScreen
 import com.xmunch.game.model.Player
 import com.xmunch.game.model.Screen
 
+
 public class GlobalSpace {
 
     static GlobalSpace globalSpace //Singleton
 
-    Boolean fullscreen
+    boolean fullscreen
+    boolean paused = false
+    boolean showNeighborsInfo = false
+    boolean showAgents = true
+    boolean showSprites = true
+    boolean showGrid = false
+    boolean showBackground = true
+
     float spaceWidth
     float spaceHeight
 
@@ -47,7 +56,7 @@ public class GlobalSpace {
         if(!fullscreen){
             globalSpace.setSpaceWidth(Constants.WIDTH)
             globalSpace.setSpaceHeight(Constants.HEIGHT)
-        } else{
+        } else {
             globalSpace.setSpaceWidth(globalSpace.getGame().displayWidth)
             globalSpace.setSpaceHeight(globalSpace.getGame().displayHeight)
         }
@@ -63,7 +72,18 @@ public class GlobalSpace {
     }
 
     public void drawWorld() {
-        globalSpace.getScreens().get(0).draw()
+
+        globalSpace.getGame().background(30)
+
+        if(globalSpace.getShowGrid()){
+            globalSpace.getScreens().get(0).draw()
+
+        } else if(globalSpace.getShowBackground()){
+            PImage img = globalSpace.getGame().loadImage("backgroundSand.jpg")
+            globalSpace.getGame().image(img, 0, 0, globalSpace.getSpaceWidth(), globalSpace.getSpaceHeight())
+        }
+
+        //TODO: Show real screen according to GlobalSpace Status
 
         for(Agent agent : globalSpace.getAgents())
             agent.draw()
