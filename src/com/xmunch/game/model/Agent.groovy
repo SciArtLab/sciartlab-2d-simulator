@@ -21,7 +21,8 @@ public class Agent extends PObject {
         if(global.getShowAgents()){
 
             if(global.getShowSprites()){
-                PImage img = global.getGame().loadImage("pillbug.png")
+
+                PImage img = global.getGame().loadImage("images.agent/"+state+".png")
                 global.getGame().image(img, x, y, width, height)
             } else {
                 game.strokeWeight(1)
@@ -58,19 +59,27 @@ public class Agent extends PObject {
 
     //Movements
     void moveUp(){
-        if(y - Constants.AGENT_SPEED > 0)
+        if(y - Constants.AGENT_SPEED > 0){
             y = y-Constants.AGENT_SPEED
+            state = "UP"
+        }
     }
     void moveDown(){
-        if(y + Constants.AGENT_SPEED + Constants.AGENT_HEIGHT < global.getSpaceWidth())
+        if(y + Constants.AGENT_SPEED + Constants.AGENT_HEIGHT < global.getSpaceWidth()){
             y = y + Constants.AGENT_SPEED
+            state = "DOWN"
+        }
     }
     void moveLeft(){
-        if(x - Constants.AGENT_SPEED > 0)
+        if(x - Constants.AGENT_SPEED > 0){
             x = x-Constants.AGENT_SPEED
+            state = "LEFT"
+        }
     }
     void moveRight(){
-        if(x + Constants.AGENT_SPEED + Constants.AGENT_WIDTH < global.getSpaceHeight())
+        if(x + Constants.AGENT_SPEED + Constants.AGENT_WIDTH < global.getSpaceHeight()){
             x = x+Constants.AGENT_SPEED
+            state = "RIGHT"
+        }
     }
 }
