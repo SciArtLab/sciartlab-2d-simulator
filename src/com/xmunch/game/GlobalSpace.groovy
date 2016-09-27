@@ -2,6 +2,7 @@ package com.xmunch.game
 
 import processing.core.PApplet
 
+import com.xmunch.game.model.Agent
 import com.xmunch.game.model.Cursor
 import com.xmunch.game.model.GridScreen
 import com.xmunch.game.model.Player
@@ -9,14 +10,19 @@ import com.xmunch.game.model.Screen
 
 public class GlobalSpace {
 
-    static GlobalSpace globalSpace
-    ArrayList<Screen> screens = new ArrayList<Screen>()
+    static GlobalSpace globalSpace //Singleton
+
     Boolean fullscreen
     float spaceWidth
     float spaceHeight
+
     PApplet game
     Player player
     Cursor cursor
+
+    ArrayList<Agent> agents = new ArrayList<Agent>()
+    ArrayList<Screen> screens = new ArrayList<Screen>()
+
 
     public GlobalSpace(){}
 
@@ -47,6 +53,7 @@ public class GlobalSpace {
         }
 
         globalSpace.setScreens(createScreens())
+        globalSpace.setAgents(createAgents())
         globalSpace.setPlayer(new Player())
         globalSpace.setCursor(new Cursor())
     }
@@ -57,6 +64,10 @@ public class GlobalSpace {
 
     public void draw() {
         globalSpace.getScreens().get(0).draw()
+
+        for(Agent agent : globalSpace.getAgents())
+            agent.draw()
+
         globalSpace.getPlayer().draw()
         globalSpace.getCursor().draw()
     }
@@ -66,5 +77,14 @@ public class GlobalSpace {
         Screen screen1 = new GridScreen()
         screens.add(screen1)
         return screens
+    }
+
+    private static ArrayList<Screen> createAgents(){
+        List<Agent> agents = new ArrayList<Agent>()
+        for(i in 0..Constants.AGENTS_NUMBER){
+            Agent agent = new Agent()
+            agents.add(agent)
+        }
+        return agents
     }
 }
