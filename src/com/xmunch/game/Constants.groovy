@@ -4,9 +4,9 @@ class Constants {
 
     //Game configuration
     public final static boolean FULL_SCREEN_DEFAULT = false //todo: ver que pasa con los buenos
-    public final static int HEIGHT = 500
-    public final static int WIDTH = 500
-    public final static int OBJECT_SIZE = 10
+    public final static int HEIGHT = 700
+    public final static int WIDTH = 700
+    public final static int OBJECT_SIZE = 25
     public final static float FRAME_RATE = 10
     public final static DEFAULT_CUR_MSG = "..."
     public final static CELL_SIZE = OBJECT_SIZE
@@ -21,9 +21,6 @@ class Constants {
     public final static float NEIGHBOR_DISTANCE = 3*OBJECT_SIZE
 
     //Keys codes
-    public final static KEY_UP = 40
-    public final static KEY_DOWN =38
-    public final static KEY_LEFT =37
-    public final static KEY_RIGHT =39
+    public final static KEY_SPACE = 32
 
 }

@@ -62,7 +62,7 @@ public class GlobalSpace {
         globalSpace.getScreens().get(0).setup()
     }
 
-    public void draw() {
+    public void drawWorld() {
         globalSpace.getScreens().get(0).draw()
 
         for(Agent agent : globalSpace.getAgents())
@@ -70,6 +70,21 @@ public class GlobalSpace {
 
         globalSpace.getPlayer().draw()
         globalSpace.getCursor().draw()
+    }
+
+    void drawNeighborsInfo(){
+        for(Agent agent : globalSpace.getAgents()){
+
+            if(globalSpace.getPlayer().isNeighbor(agent.getX(), agent.getY())){
+                globalSpace.getGame().strokeWeight(3)
+                globalSpace.getGame().stroke(255, 100, 100)
+            } else {
+                globalSpace.getGame().strokeWeight(0.5)
+                globalSpace.getGame().stroke(globalSpace.getGame().random(0,255),globalSpace.getGame().random(200,255),globalSpace.getGame().random(200,255))
+            }
+
+            globalSpace.getGame().line((float)agent.getX(),(float)agent.getY(), (float)globalSpace.getPlayer().getX(),(float)globalSpace.getPlayer().getY())
+        }
     }
 
     private static ArrayList<Screen> createScreens(){

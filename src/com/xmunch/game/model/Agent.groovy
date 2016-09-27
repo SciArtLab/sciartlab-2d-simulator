@@ -39,7 +39,7 @@ public class Agent extends PObject {
 
     //Social
     boolean isNeighbor(float x, float y){
-        if(Math.abs(this.x - x) <= Constants.NEIGHBOR_DISTANCE || Math.abs(this.y - y) <= Constants.NEIGHBOR_DISTANCE)
+        if(game.dist((float)this.x, (float)this.y, (float)x,(float) y) <= Constants.NEIGHBOR_DISTANCE)
             return true
         else return false
     }
