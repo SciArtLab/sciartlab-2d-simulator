@@ -37,6 +37,14 @@ public class Agent extends PObject {
             moveRight()
     }
 
+    //Social
+    boolean isNeighbor(float x, float y){
+        if(Math.abs(this.x - x) <= Constants.NEIGHBOR_DISTANCE || Math.abs(this.y - y) <= Constants.NEIGHBOR_DISTANCE)
+            return true
+        else return false
+    }
+
+    //Movements
     void moveUp(){
         if(y - Constants.AGENT_SPEED > 0)
             y = y-Constants.AGENT_SPEED
