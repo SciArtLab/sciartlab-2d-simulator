@@ -9,6 +9,7 @@ import com.xmunch.game.GlobalSpace
 class PObject {
     long id
     String name
+    String state = "UP"
     PApplet game
     GlobalSpace global
     float x, y, width, height
