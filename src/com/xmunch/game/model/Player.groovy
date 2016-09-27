@@ -1,5 +1,7 @@
 package com.xmunch.game.model
 
+import processing.core.PImage
+
 import com.xmunch.game.Constants
 import com.xmunch.game.GlobalSpace
 
@@ -20,10 +22,8 @@ public class Player extends Agent {
 
             if(global.getShowSprites()){
 
-                game.strokeWeight(1)
-                game.stroke(0,0,255)
-                game.fill(0,0,255)
-                game.rect(x,y,width,height)
+                PImage img = global.getGame().loadImage("images.player/"+state+".png")
+                global.getGame().image(img, x, y, width, height)
             } else {
 
                 game.strokeWeight(1)
