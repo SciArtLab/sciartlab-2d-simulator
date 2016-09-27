@@ -23,7 +23,7 @@ public class Cursor extends PObject {
 
     void drawCur(){
         game.strokeWeight(0)
-        game.fill(0, 230, 0)
+        game.fill(100, 120, 255)
         game.rect(game.mouseX,game.mouseY,width,height)
     }
 
