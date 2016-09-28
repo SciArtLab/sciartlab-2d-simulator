@@ -12,7 +12,7 @@ class Constants {
     public final static CELL_SIZE = OBJECT_SIZE
 
     //Player configuration
-    public final static int AGENT_SPEED = OBJECT_SIZE/5
+    public final static int AGENT_SPEED = OBJECT_SIZE/10
     public final static int AGENT_WIDTH = OBJECT_SIZE
     public final static int AGENT_HEIGHT = OBJECT_SIZE
 
@@ -26,5 +26,6 @@ class Constants {
     public final static KEY_N = 78
     public final static KEY_A = 65
     public final static KEY_S = 83
+    public final static KEY_B = 66
 
 }

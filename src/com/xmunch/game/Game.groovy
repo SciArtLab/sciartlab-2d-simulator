@@ -31,11 +31,19 @@ class Game extends PApplet{
     void draw() {
         if(!global.getPaused()){
             global.drawWorld()
-
-            if(global.getShowNeighborsInfo())
-                global.drawNeighborsInfo()
         }
     }
+
+    @Override
+    void mousePressed() {
+        global.setIsMouseClicked(true)
+    }
+
+    @Override
+    void mouseReleased() {
+        global.setIsMouseClicked(false)
+    }
+
 
     @Override
     void keyPressed() {
@@ -46,6 +54,8 @@ class Game extends PApplet{
             global.setPaused(!global.getPaused())
         }else if(keyCode == Constants.KEY_G){
             global.setShowGrid(!global.getShowGrid())
+        }else if(keyCode == Constants.KEY_B){
+            global.setShowBackground(!global.getShowBackground())
         }else if(keyCode == Constants.KEY_N){
             global.setShowNeighborsInfo(!global.getShowNeighborsInfo())
         }else if(keyCode == Constants.KEY_A){
