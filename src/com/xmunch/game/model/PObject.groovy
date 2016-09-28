@@ -18,4 +18,12 @@ class PObject {
         game = GlobalSpace.getInstance().getGame()
         global = GlobalSpace.getInstance()
     }
+
+    public float getCenterX(){
+        return (float)(x+width/2)
+    }
+
+    public float getCenterY(){
+        return (float)(y+height/2)
+    }
 }

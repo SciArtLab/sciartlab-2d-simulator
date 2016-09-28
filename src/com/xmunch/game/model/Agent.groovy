@@ -10,10 +10,11 @@ public class Agent extends PObject {
 
     public Agent(){
         super()
-        x = game.random(0, width) % Constants.AGENT_WIDTH
-        y = game.random(0,height) % Constants.AGENT_HEIGHT
         width = Constants.AGENT_WIDTH
         height = Constants.AGENT_HEIGHT
+
+        x = game.random(0, (float)(Constants.WIDTH - width))
+        y = game.random(0,(float)(Constants.HEIGHT - height))
     }
 
     void draw() {
@@ -29,10 +30,24 @@ public class Agent extends PObject {
                 game.stroke(0,235,0)
                 game.fill(0,50,0)
                 game.rect(x, y, width, height)
+                game.strokeWeight(0)
+                game.fill(0,255,255)
+                game.ellipse(getCenterX(), getCenterY(), 3, 3)
             }
         }
 
+        live()
+    }
+
+    void live(){
+
         moveRandomly()
+
+        if(clickedByMouseListener()) die()
+    }
+
+    void die(){
+        global.getAgentsToRemove().add(this)
     }
 
     void moveRandomly(){
@@ -60,7 +75,7 @@ public class Agent extends PObject {
 
     //Social
     boolean isNeighbor(float x, float y){
-        if(game.dist((float)this.x, (float)this.y, (float)x,(float) y) <= Constants.NEIGHBOR_DISTANCE)
+        if(game.dist(this.centerX, this.centerY, x, y) <= Constants.NEIGHBOR_DISTANCE)
             return true
         else return false
     }
@@ -117,5 +132,10 @@ public class Agent extends PObject {
             x = x+Constants.AGENT_SPEED
             state = "RIGHT"
         }
+    }
+
+    boolean clickedByMouseListener()  {
+        return (global.isMouseClicked && game.mouseX >= x && game.mouseX <= x+width &&
+                game.mouseY >= y && game.mouseY <= y+height)
     }
 }

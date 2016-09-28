@@ -13,6 +13,7 @@ public class GlobalSpace {
     protected static GlobalSpace globalSpace
 
     boolean paused = false
+    boolean isMouseClicked = false
     boolean showNeighborsInfo = false
     boolean showAgents = true
     boolean showSprites = true
@@ -28,6 +29,8 @@ public class GlobalSpace {
     Cursor cursor
 
     ArrayList<Agent> agents = new ArrayList<Agent>()
+    ArrayList<Agent> agentsToAdd = new ArrayList<Agent>()
+    ArrayList<Agent> agentsToRemove = new ArrayList<Agent>()
     ArrayList<Screen> screens = new ArrayList<Screen>()
 
 
@@ -45,14 +48,26 @@ public class GlobalSpace {
         for(Agent agent : globalSpace.getAgents())
             agent.draw()
 
+        for(Agent agent : globalSpace.getAgentsToAdd())
+            globalSpace.getAgents().add(agent)
+
+
+        for(Agent agent : globalSpace.getAgentsToRemove())
+            globalSpace.getAgents().remove(agent)
+
         globalSpace.getPlayer().draw()
         globalSpace.getCursor().draw()
+
+        if(globalSpace.getShowNeighborsInfo())
+            globalSpace.drawNeighborsInfo()
     }
 
     void drawNeighborsInfo(){
+
+        println "drawNeighborsInfo"
         for(Agent agent : globalSpace.getAgents()){
 
-            if(globalSpace.getPlayer().isNeighbor(agent.getX(), agent.getY())){
+            if(globalSpace.getPlayer().isNeighbor(agent.getCenterX(), agent.getCenterY())){
                 globalSpace.getGame().strokeWeight(3)
                 globalSpace.getGame().stroke(255, 100, 100)
             } else {
@@ -60,7 +75,7 @@ public class GlobalSpace {
                 globalSpace.getGame().stroke(globalSpace.getGame().random(0,255),globalSpace.getGame().random(200,255),globalSpace.getGame().random(200,255))
             }
 
-            globalSpace.getGame().line((float)agent.getX(),(float)agent.getY(), (float)globalSpace.getPlayer().getX(),(float)globalSpace.getPlayer().getY())
+            globalSpace.getGame().line(agent.getCenterX(), agent.getCenterY(), globalSpace.getPlayer().getCenterX(), globalSpace.getPlayer().getCenterY())
         }
     }
 }
