@@ -38,13 +38,21 @@ public class Agent extends PObject {
     void moveRandomly(){
         def movement = game.random(0,100)
 
-        if(movement <= 25)
+        if(movement <= 10)
             moveUp()
+        else if(movement <= 25)
+            moveLeftUp()
+        else if(movement <= 35)
+            moveLeftDown()
         else
-        if(movement <= 50)
+        if(movement <= 45)
             moveDown()
-        else  if(movement <= 75)
+        else  if(movement <= 55)
             moveLeft()
+        else if(movement <= 65)
+            moveRightUp()
+        else if(movement <= 85)
+            moveRightDown()
         else
         if(movement <= 100)
             moveRight()
@@ -68,6 +76,34 @@ public class Agent extends PObject {
         if(y + Constants.AGENT_SPEED + Constants.AGENT_HEIGHT < global.getSpaceWidth()){
             y = y + Constants.AGENT_SPEED
             state = "DOWN"
+        }
+    }
+    void moveLeftUp(){
+        if(y - Constants.AGENT_SPEED > 0){
+            y = y-Constants.AGENT_SPEED
+            x = x-Constants.AGENT_SPEED
+            state = "UP_LEFT"
+        }
+    }
+    void moveLeftDown(){
+        if(y + Constants.AGENT_SPEED + Constants.AGENT_HEIGHT < global.getSpaceWidth()){
+            y = y + Constants.AGENT_SPEED
+            x = x - Constants.AGENT_SPEED
+            state = "DOWN_LEFT"
+        }
+    }
+    void moveRightUp(){
+        if(y - Constants.AGENT_SPEED > 0){
+            y = y-Constants.AGENT_SPEED
+            x = x+Constants.AGENT_SPEED
+            state = "UP_RIGHT"
+        }
+    }
+    void moveRightDown(){
+        if(y + Constants.AGENT_SPEED + Constants.AGENT_HEIGHT < global.getSpaceWidth()){
+            y = y + Constants.AGENT_SPEED
+            x = x + Constants.AGENT_SPEED
+            state = "DOWN_RIGHT"
         }
     }
     void moveLeft(){
