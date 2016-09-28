@@ -10,10 +10,6 @@ class Game extends PApplet{
         args = new String[1]
         args[0]="com.xmunch.game.Game"
         PApplet.main(args)
-
-        //          TODO: Uncomment
-        //        args[0]="com.xmunch.game.Board"
-        //        PApplet.main(args)
     }
 
     @Override
@@ -27,8 +23,7 @@ class Game extends PApplet{
     @Override
     void setup() {
         frameRate(Constants.FRAME_RATE)
-        global = GlobalSpace.getInstance(this, Constants.FULL_SCREEN_DEFAULT)
-        global.setup()
+        global = CustomGlobalSpace.getInstance(this)
         smooth()
     }
 

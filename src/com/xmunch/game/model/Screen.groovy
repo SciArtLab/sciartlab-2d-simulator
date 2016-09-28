@@ -16,6 +16,5 @@ public class Screen extends PObject {
         game.background(red, green, blue)
     }
 
-    void draw() {
-    }
+    void draw() {}
 }
