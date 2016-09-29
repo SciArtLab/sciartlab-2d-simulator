@@ -15,10 +15,14 @@ class Constants {
     public final static int AGENT_SPEED = OBJECT_SIZE/10
     public final static int AGENT_WIDTH = OBJECT_SIZE/2
     public final static int AGENT_HEIGHT = OBJECT_SIZE/2
+    public final static String DEFAULT_PLAYER_TYPE = "ant"
+    public final static String PLAYER_SPRITES_FOLDER = "images/agent/"
 
     //Agents configuration
     public final static int AGENTS_NUMBER = 25
     public final static float NEIGHBOR_DISTANCE = 3*OBJECT_SIZE
+    public final static String DEFAULT_AGENT_TYPE = "ant"
+    public final static String AGENT_SPRITES_FOLDER = "images/agent/"
 
     //Keys codes
     public final static KEY_SPACE = 32

@@ -1,9 +1,6 @@
 package com.xmunch.game.model
 
-import processing.core.PImage
-
-import com.xmunch.game.Constants
-import com.xmunch.game.GlobalSpace
+import com.xmunch.game.utils.GameUtils
 
 
 
@@ -11,27 +8,10 @@ public class Player extends Agent {
 
     public Player(){
         super()
-        x = (float)global.getSpaceWidth()/2
-        y = (float)global.getSpaceHeight()/2
-        width = Constants.AGENT_WIDTH*2
-        height = Constants.AGENT_HEIGHT*2
-        speed = Constants.AGENT_SPEED*2
+        GameUtils.initializePlayer(this)
     }
 
     void draw() {
-        if(global.getShowAgents()){
-
-            if(global.getShowSprites()){
-
-                PImage img = global.getGame().loadImage("images.agent/"+state+animationFrame+".png")
-                global.getGame().image(img, x, y, width, height)
-            } else {
-
-                game.strokeWeight(1)
-                game.stroke(100,110,255)
-                game.fill(50,60,60)
-                game.rect(x,y,width,height)
-            }
-        }
+        GameUtils.drawPlayer(this)
     }
 }
