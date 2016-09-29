@@ -11,9 +11,10 @@ public class Agent extends PObject {
 
     protected String type
 
-    public Agent(String type){
+    public Agent(String type, String state){
         super()
         this.type = type
+        this.state = state
         GameUtils.initializeAgent(this)
     }
 

@@ -5,6 +5,7 @@ import processing.core.PImage
 import com.xmunch.game.Constants
 import com.xmunch.game.model.Agent
 import com.xmunch.game.model.Player
+import com.xmunch.game.model.ScreenObject
 
 public class GameUtils {
 
@@ -20,6 +21,7 @@ public class GameUtils {
 
     public static void initializeAgent(Agent agent){
         if(agent.type == null) agent.type = Constants.DEFAULT_AGENT_TYPE
+        if(agent.state == null) agent.state = Constants.DEFAULT_AGENT_STATE
 
         agent.width = Constants.AGENT_WIDTH
         agent.height = Constants.AGENT_HEIGHT
@@ -28,6 +30,19 @@ public class GameUtils {
         agent.x = agent.game.random(0, (float)(Constants.WIDTH - agent.width))
         agent.y = agent.game.random(0,(float)(Constants.HEIGHT - agent.height))
     }
+
+    public static void initializeScreenObject(ScreenObject screenObject){
+        if(screenObject.type == null) screenObject.type = Constants.DEFAULT_OBJECT_TYPE
+        if(screenObject.state == null) screenObject.state = Constants.DEFAULT_OBJECT_STATE
+
+        screenObject.width = Constants.OBJECT_WIDTH
+        screenObject.height = Constants.OBJECT_HEIGHT
+
+        screenObject.x = screenObject.game.random(0, (float)(Constants.WIDTH - screenObject.width))
+        screenObject.y = screenObject.game.random(0,(float)(Constants.HEIGHT - screenObject.height))
+    }
+
+
 
     public static void drawPlayer(Player player){
         if(player.global.getShowAgents()){
@@ -61,7 +76,27 @@ public class GameUtils {
                 agent.game.rect(agent.x, agent.y, agent.width, agent.height)
                 agent.game.strokeWeight(0)
                 agent.game.fill(0,255,255)
-                agent.game.ellipse(getCenterX(), getCenterY(), 3, 3)
+                agent.game.ellipse(agent.getCenterX(), agent.getCenterY(), 3, 3)
+            }
+        }
+    }
+
+    public static void drawScreenObject(ScreenObject screenObject){
+
+        if(screenObject.global.getShowAgents()){
+
+            if(screenObject.global.getShowSprites()){
+
+                PImage img = screenObject.game.loadImage(Constants.OBJECT_SPRITES_FOLDER+screenObject.type+"/"+screenObject.state+screenObject.animationFrame+".png")
+                screenObject.game.image(img, screenObject.x, screenObject.y, screenObject.width, screenObject.height)
+            } else {
+                screenObject.game.strokeWeight(1)
+                screenObject.game.stroke(235,0,0)
+                screenObject.game.fill(255,255,0)
+                screenObject.game.rect(screenObject.x, screenObject.y, screenObject.width, screenObject.height)
+                screenObject.game.strokeWeight(0)
+                screenObject.game.fill(0,0,255)
+                screenObject.game.ellipse(screenObject.getCenterX(), screenObject.getCenterY(), 3, 3)
             }
         }
     }

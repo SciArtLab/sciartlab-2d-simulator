@@ -9,7 +9,7 @@ import com.xmunch.game.GlobalSpace
 class PObject {
     long id
     String name
-    String state = "UP"
+    String state
     int animationFrame = 0
     PApplet game
     GlobalSpace global

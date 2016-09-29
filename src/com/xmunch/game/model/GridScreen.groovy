@@ -52,6 +52,8 @@ public class GridScreen extends Screen {
                 }
             }
         }
+
+        super.draw()
     }
 }
 
