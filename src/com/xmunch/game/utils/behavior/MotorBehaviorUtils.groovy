@@ -2,6 +2,7 @@ package com.xmunch.game.utils.behavior
 
 import com.xmunch.game.Constants
 import com.xmunch.game.model.Agent
+import com.xmunch.game.utils.GameUtils
 
 public class MotorBehaviorUtils  {
 
@@ -29,70 +30,92 @@ public class MotorBehaviorUtils  {
     }
 
     static void moveUp(Agent agent){
-        if(agent.y - agent.speed > 0){
+        agent.state = "UP"
+        if(agent.y - agent.speed > 0 && GameUtils.thereIsNotObstacle(agent, agent.centerX, agent.centerY-agent.speed)){
             agent.animationFrame = agent.global.getAnimationFrame(2)
             agent.y = agent.y-agent.speed
-            agent.state = "UP"
+        } else {
+            moveRightUp(agent)
         }
     }
 
     static void moveDown(Agent agent){
-        if(agent.y + agent.speed + Constants.AGENT_HEIGHT < agent.global.getSpaceWidth()){
+        agent.state = "DOWN"
+        if(agent.y + agent.speed + Constants.AGENT_HEIGHT < agent.global.getSpaceWidth()
+        && GameUtils.thereIsNotObstacle(agent, agent.centerX, agent.centerY+agent.speed)){
             agent.animationFrame = agent.global.getAnimationFrame(2)
             agent.y = agent.y + agent.speed
-            agent.state = "DOWN"
+        } else {
+            moveLeftDown(agent)
         }
     }
 
     static void moveLeftUp(Agent agent){
-        if(agent.y - agent.speed > 0){
+        agent.state = "UP_LEFT"
+        if(agent.y - agent.speed > 0 && GameUtils.thereIsNotObstacle(agent, agent.centerX -agent.speed, agent.centerY -agent.speed)){
             agent.y = agent.y-agent.speed
             agent.x = agent.x-agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
-            agent.state = "UP_LEFT"
+        } else {
+            moveUp(agent)
         }
     }
 
     static void moveLeftDown(Agent agent){
-        if(agent.y + agent.speed + Constants.AGENT_HEIGHT < agent.global.getSpaceWidth()){
+        agent.state = "DOWN_LEFT"
+        if(agent.y + agent.speed + Constants.AGENT_HEIGHT < agent.global.getSpaceWidth()
+        && GameUtils.thereIsNotObstacle(agent, agent.centerX -agent.speed, agent.centerY +agent.speed)){
             agent.y = agent.y + agent.speed
             agent.x = agent.x - agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
-            agent.state = "DOWN_LEFT"
+        } else {
+            moveLeft(agent)
         }
     }
 
     static void moveRightUp(Agent agent){
-        if(agent.y - agent.speed > 0){
+        agent.state = "UP_RIGHT"
+        if(agent.y - agent.speed > 0 &&
+        GameUtils.thereIsNotObstacle(agent, agent.centerX +agent.speed, agent.centerY -agent.speed)){
             agent.y = agent.y-agent.speed
             agent.x = agent.x+agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
-            agent.state = "UP_RIGHT"
+        } else {
+            moveRight(agent)
         }
     }
 
     static void moveRightDown(Agent agent){
-        if(agent.y + agent.speed + Constants.AGENT_HEIGHT < agent.global.getSpaceWidth()){
+        agent.state = "DOWN_RIGHT"
+        if(agent.y + agent.speed + Constants.AGENT_HEIGHT < agent.global.getSpaceWidth() &&
+        GameUtils.thereIsNotObstacle(agent, agent.centerX +agent.speed, agent.centerY +agent.speed)){
             agent.y = agent.y + agent.speed
             agent.x = agent.x + agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
-            agent.state = "DOWN_RIGHT"
+        } else {
+            moveDown(agent)
         }
     }
 
     static void moveLeft(Agent agent){
-        if(agent.x - agent.speed > 0){
+        agent.state = "LEFT"
+        if(agent.x - agent.speed > 0
+        && GameUtils.thereIsNotObstacle(agent, agent.centerX -agent.speed, agent.centerY )){
             agent.x = agent.x-agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
-            agent.state = "LEFT"
+        } else {
+            moveLeftUp(agent)
         }
     }
 
     static void moveRight(Agent agent){
-        if(agent.x + agent.speed + Constants.AGENT_WIDTH < agent.global.getSpaceHeight()){
+        agent.state = "RIGHT"
+        if(agent.x + agent.speed + Constants.AGENT_WIDTH < agent.global.getSpaceHeight()
+        && GameUtils.thereIsNotObstacle(agent, agent.centerX +agent.speed, agent.centerY )){
             agent.x = agent.x+agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
-            agent.state = "RIGHT"
+        } else {
+            moveRightDown(agent)
         }
     }
 }
