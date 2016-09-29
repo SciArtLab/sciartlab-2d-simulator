@@ -102,6 +102,10 @@ public class GameUtils {
         }
     }
 
+    static void createObject(Screen screen, ScreenObject object){
+        screen.objectsToAdd.add(object)
+    }
+
     static Boolean thereIsNotObstacle(Agent agent, x, y){
         return thereIsNotObstacle(agent.global.screens.get(agent.global.currentScreen), (float)x, (float)y)
     }
