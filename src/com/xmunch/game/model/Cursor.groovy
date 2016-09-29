@@ -1,9 +1,6 @@
 package com.xmunch.game.model
 
-import processing.core.PApplet
-
 import com.xmunch.game.Constants
-import com.xmunch.game.GlobalSpace
 
 
 public class Cursor extends PObject {
