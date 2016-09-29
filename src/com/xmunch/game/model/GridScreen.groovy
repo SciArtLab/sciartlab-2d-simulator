@@ -1,8 +1,7 @@
 package com.xmunch.game.model
 
-import processing.core.PImage
-
 import com.xmunch.game.Constants
+import com.xmunch.game.utils.GameUtils
 
 
 public class GridScreen extends Screen {
@@ -29,8 +28,12 @@ public class GridScreen extends Screen {
             game.background(red, green, blue)
 
             if(backgroundImage != null && backgroundImage.length() != 0){
-                PImage img = global.getGame().loadImage(backgroundImage)
-                global.getGame().image(img, 0, 0, global.getSpaceWidth(), global.getSpaceHeight())
+
+                String image = backgroundImage
+                if(GameUtils.getImage(global, image) == null)
+                    GameUtils.setImage(global, image)
+
+                global.getGame().image(GameUtils.getImage(global, image), 0, 0, global.getSpaceWidth(), global.getSpaceHeight())
             }
         } else if (global.getShowGrid()){
 
