@@ -31,7 +31,8 @@ public class MotorBehaviorUtils  {
 
     static void moveUp(Agent agent){
         agent.state = "UP"
-        if(agent.y - agent.speed > 0 && GameUtils.thereIsNotObstacle(agent, agent.centerX, agent.centerY-agent.speed)){
+        if(agent.y - agent.speed > 0
+        && GameUtils.thereIsNotObstacle(agent, agent.centerX, agent.centerY-agent.speed)){
             agent.animationFrame = agent.global.getAnimationFrame(2)
             agent.y = agent.y-agent.speed
         } else {
@@ -52,7 +53,9 @@ public class MotorBehaviorUtils  {
 
     static void moveLeftUp(Agent agent){
         agent.state = "UP_LEFT"
-        if(agent.y - agent.speed > 0 && GameUtils.thereIsNotObstacle(agent, agent.centerX -agent.speed, agent.centerY -agent.speed)){
+        if(agent.x - agent.speed > 0 &&
+        agent.y - agent.speed > 0
+        && GameUtils.thereIsNotObstacle(agent, agent.centerX -agent.speed, agent.centerY -agent.speed)){
             agent.y = agent.y-agent.speed
             agent.x = agent.x-agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
@@ -63,7 +66,9 @@ public class MotorBehaviorUtils  {
 
     static void moveLeftDown(Agent agent){
         agent.state = "DOWN_LEFT"
-        if(agent.y + agent.speed + Constants.AGENT_HEIGHT < agent.global.getSpaceWidth()
+        if(agent.x - agent.speed > 0 &&
+        agent.y + agent.speed
+        + Constants.AGENT_HEIGHT < agent.global.getSpaceWidth()
         && GameUtils.thereIsNotObstacle(agent, agent.centerX -agent.speed, agent.centerY +agent.speed)){
             agent.y = agent.y + agent.speed
             agent.x = agent.x - agent.speed
@@ -75,8 +80,9 @@ public class MotorBehaviorUtils  {
 
     static void moveRightUp(Agent agent){
         agent.state = "UP_RIGHT"
-        if(agent.y - agent.speed > 0 &&
-        GameUtils.thereIsNotObstacle(agent, agent.centerX +agent.speed, agent.centerY -agent.speed)){
+        if(agent.x + agent.speed + Constants.AGENT_WIDTH < agent.global.getSpaceHeight()
+        && agent.y - agent.speed > 0
+        &&  GameUtils.thereIsNotObstacle(agent, agent.centerX +agent.speed, agent.centerY -agent.speed)){
             agent.y = agent.y-agent.speed
             agent.x = agent.x+agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
@@ -87,8 +93,9 @@ public class MotorBehaviorUtils  {
 
     static void moveRightDown(Agent agent){
         agent.state = "DOWN_RIGHT"
-        if(agent.y + agent.speed + Constants.AGENT_HEIGHT < agent.global.getSpaceWidth() &&
-        GameUtils.thereIsNotObstacle(agent, agent.centerX +agent.speed, agent.centerY +agent.speed)){
+        if(agent.x + agent.speed + Constants.AGENT_WIDTH < agent.global.getSpaceHeight()
+        && agent.y + agent.speed + Constants.AGENT_HEIGHT < agent.global.getSpaceWidth()
+        && GameUtils.thereIsNotObstacle(agent, agent.centerX +agent.speed, agent.centerY +agent.speed)){
             agent.y = agent.y + agent.speed
             agent.x = agent.x + agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
