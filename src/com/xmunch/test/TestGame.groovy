@@ -4,7 +4,8 @@ import processing.core.PApplet
 
 import com.xmunch.game.Constants
 import com.xmunch.game.Game
-import com.xmunch.game.GlobalSpace
+import com.xmunch.game.model.ScreenObject
+import com.xmunch.game.utils.GameUtils
 
 class TestGame extends Game{
 
@@ -19,6 +20,23 @@ class TestGame extends Game{
         frameRate(Constants.FRAME_RATE)
         global = TestGlobalSpace.getInstance(this)
         smooth()
+    }
+
+    @Override
+    void draw(){
+        super.draw() //Do not remove
+
+        // Example: Adding specific object on click
+        if(mousePressed){
+            ScreenObject egg = new ScreenObject("egg","static")
+            egg.x = mouseX
+            egg.y = mouseY
+            egg.width = (float)(egg.width/5)
+            egg.height = (float)(egg.height/5)
+            GameUtils.createObject(global.getScreens().get(global.currentScreen), egg)
+        }
+
+        //fill(153);rect(30, 20, 55, 55)
     }
 
     @Override
