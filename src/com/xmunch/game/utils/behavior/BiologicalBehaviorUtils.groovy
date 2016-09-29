@@ -12,6 +12,6 @@ public class BiologicalBehaviorUtils {
     }
 
     static void die(Agent agent){
-        agent.global.getAgentsToRemove().add(agent)
+        agent.global.screens.get(agent.global.currentScreen).getAgentsToRemove().add(agent)
     }
 }
