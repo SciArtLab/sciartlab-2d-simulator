@@ -1,6 +1,7 @@
 package com.xmunch.game.model
 
 import com.xmunch.game.utils.GameUtils
+import com.xmunch.game.utils.behavior.ActuatorBehaviorUtils
 import com.xmunch.game.utils.behavior.BiologicalBehaviorUtils
 import com.xmunch.game.utils.behavior.MotorBehaviorUtils
 import com.xmunch.game.utils.behavior.SensorBehaviorUtils
@@ -81,6 +82,11 @@ public class Agent extends PObject {
 
     void moveRight(){
         MotorBehaviorUtils.moveRight(this)
+    }
+
+    //Actuator
+    void eraseEnvironment(){
+        ActuatorBehaviorUtils.eraseEnvironment(this)
     }
 
 }
