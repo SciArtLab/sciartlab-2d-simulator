@@ -78,4 +78,8 @@ public class GlobalSpace {
             globalSpace.getGame().line(agent.getCenterX(), agent.getCenterY(), globalSpace.getPlayer().getCenterX(), globalSpace.getPlayer().getCenterY())
         }
     }
+
+    Integer getAnimationFrame(Integer spritesNumber){
+        if(game.frameCount % spritesNumber) return 0 else return 1
+    }
 }

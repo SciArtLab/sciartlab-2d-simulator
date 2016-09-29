@@ -13,8 +13,9 @@ public class Player extends Agent {
         super()
         x = (float)global.getSpaceWidth()/2
         y = (float)global.getSpaceHeight()/2
-        width = Constants.AGENT_WIDTH
-        height = Constants.AGENT_HEIGHT
+        width = Constants.AGENT_WIDTH*2
+        height = Constants.AGENT_HEIGHT*2
+        speed = Constants.AGENT_SPEED*2
     }
 
     void draw() {
@@ -22,7 +23,7 @@ public class Player extends Agent {
 
             if(global.getShowSprites()){
 
-                PImage img = global.getGame().loadImage("images.player/"+state+".png")
+                PImage img = global.getGame().loadImage("images.agent/"+state+animationFrame+".png")
                 global.getGame().image(img, x, y, width, height)
             } else {
 

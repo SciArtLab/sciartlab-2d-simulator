@@ -12,6 +12,7 @@ public class Agent extends PObject {
         super()
         width = Constants.AGENT_WIDTH
         height = Constants.AGENT_HEIGHT
+        speed = Constants.AGENT_SPEED
 
         x = game.random(0, (float)(Constants.WIDTH - width))
         y = game.random(0,(float)(Constants.HEIGHT - height))
@@ -23,7 +24,7 @@ public class Agent extends PObject {
 
             if(global.getShowSprites()){
 
-                PImage img = global.getGame().loadImage("images.agent/"+state+".png")
+                PImage img = global.getGame().loadImage("images.agent/"+state+animationFrame+".png")
                 global.getGame().image(img, x, y, width, height)
             } else {
                 game.strokeWeight(1)
@@ -82,54 +83,62 @@ public class Agent extends PObject {
 
     //Movements
     void moveUp(){
-        if(y - Constants.AGENT_SPEED > 0){
-            y = y-Constants.AGENT_SPEED
+        if(y - speed > 0){
+            animationFrame = global.getAnimationFrame(2)
+            y = y-speed
             state = "UP"
         }
     }
     void moveDown(){
-        if(y + Constants.AGENT_SPEED + Constants.AGENT_HEIGHT < global.getSpaceWidth()){
-            y = y + Constants.AGENT_SPEED
+        if(y + speed + Constants.AGENT_HEIGHT < global.getSpaceWidth()){
+            animationFrame = global.getAnimationFrame(2)
+            y = y + speed
             state = "DOWN"
         }
     }
     void moveLeftUp(){
-        if(y - Constants.AGENT_SPEED > 0){
-            y = y-Constants.AGENT_SPEED
-            x = x-Constants.AGENT_SPEED
+        if(y - speed > 0){
+            y = y-speed
+            x = x-speed
+            animationFrame = global.getAnimationFrame(2)
             state = "UP_LEFT"
         }
     }
     void moveLeftDown(){
-        if(y + Constants.AGENT_SPEED + Constants.AGENT_HEIGHT < global.getSpaceWidth()){
-            y = y + Constants.AGENT_SPEED
-            x = x - Constants.AGENT_SPEED
+        if(y + speed + Constants.AGENT_HEIGHT < global.getSpaceWidth()){
+            y = y + speed
+            x = x - speed
+            animationFrame = global.getAnimationFrame(2)
             state = "DOWN_LEFT"
         }
     }
     void moveRightUp(){
-        if(y - Constants.AGENT_SPEED > 0){
-            y = y-Constants.AGENT_SPEED
-            x = x+Constants.AGENT_SPEED
+        if(y - speed > 0){
+            y = y-speed
+            x = x+speed
+            animationFrame = global.getAnimationFrame(2)
             state = "UP_RIGHT"
         }
     }
     void moveRightDown(){
-        if(y + Constants.AGENT_SPEED + Constants.AGENT_HEIGHT < global.getSpaceWidth()){
-            y = y + Constants.AGENT_SPEED
-            x = x + Constants.AGENT_SPEED
+        if(y + speed + Constants.AGENT_HEIGHT < global.getSpaceWidth()){
+            y = y + speed
+            x = x + speed
+            animationFrame = global.getAnimationFrame(2)
             state = "DOWN_RIGHT"
         }
     }
     void moveLeft(){
-        if(x - Constants.AGENT_SPEED > 0){
-            x = x-Constants.AGENT_SPEED
+        if(x - speed > 0){
+            x = x-speed
+            animationFrame = global.getAnimationFrame(2)
             state = "LEFT"
         }
     }
     void moveRight(){
-        if(x + Constants.AGENT_SPEED + Constants.AGENT_WIDTH < global.getSpaceHeight()){
-            x = x+Constants.AGENT_SPEED
+        if(x + speed + Constants.AGENT_WIDTH < global.getSpaceHeight()){
+            x = x+speed
+            animationFrame = global.getAnimationFrame(2)
             state = "RIGHT"
         }
     }

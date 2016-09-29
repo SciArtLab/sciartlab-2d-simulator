@@ -10,9 +10,10 @@ class PObject {
     long id
     String name
     String state = "UP"
+    int animationFrame = 0
     PApplet game
     GlobalSpace global
-    float x, y, width, height
+    float x, y, width, height, speed
 
     public PObject(){
         game = GlobalSpace.getInstance().getGame()
