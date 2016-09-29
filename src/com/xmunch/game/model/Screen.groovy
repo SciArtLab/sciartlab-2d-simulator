@@ -34,9 +34,12 @@ public class Screen extends PObject {
         for(ScreenObject screenObject : getObjectsToAdd())
             getObjects().add(screenObject)
 
+        objectsToAdd.clear()
 
         for(ScreenObject screenObject : getObjectsToRemove())
             getObjects().remove(screenObject)
+
+        objectsToRemove.clear()
 
         for(Agent agent : getAgents())
             agent.draw()
@@ -44,9 +47,12 @@ public class Screen extends PObject {
         for(Agent agent : getAgentsToAdd())
             getAgents().add(agent)
 
+        agentsToAdd.clear()
 
         for(Agent agent : getAgentsToRemove())
             getAgents().remove(agent)
+
+        agentsToRemove.clear()
 
         global.getPlayer().draw()
         global.getCursor().draw()
