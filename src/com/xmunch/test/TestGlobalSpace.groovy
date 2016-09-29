@@ -1,14 +1,16 @@
-package com.xmunch.game
+package com.xmunch.test
 
 import processing.core.PApplet
 
+import com.xmunch.game.GlobalSpace
 import com.xmunch.game.model.Cursor
 import com.xmunch.game.model.GridScreen
 import com.xmunch.game.model.Player
 import com.xmunch.game.model.Screen
 
-public class CustomGlobalSpace extends GlobalSpace {
+public class TestGlobalSpace extends com.xmunch.game.CustomGlobalSpace {
 
+    @Override
     public static GlobalSpace getInstance(PApplet game) {
 
         if (globalSpace == null) {
@@ -22,15 +24,10 @@ public class CustomGlobalSpace extends GlobalSpace {
         return globalSpace
     }
 
-    static void initializeGlobalSpace(PApplet game){
-        globalSpace.setGame(game)
-        globalSpace.setSpaceWidth(Constants.WIDTH)
-        globalSpace.setSpaceHeight(Constants.HEIGHT)
-    }
-
+    @Override
     protected static ArrayList<Screen> createScreens(){
         List<Screen> screens = new ArrayList<Screen>()
-        Screen screen1 = new GridScreen("backgroundSand.jpg")
+        Screen screen1 = new GridScreen("sandTexture.jpg")
         screens.add(screen1)
         return screens
     }

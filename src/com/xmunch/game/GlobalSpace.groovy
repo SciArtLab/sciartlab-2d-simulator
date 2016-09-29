@@ -36,8 +36,7 @@ public class GlobalSpace {
     }
 
     public void drawWorld() {
-        Screen currentScreen = globalSpace.getScreens().get(currentScreen);
-        println currentScreen.getName()
+        Screen currentScreen = globalSpace.getScreens().get(currentScreen)
         currentScreen.draw()
     }
 

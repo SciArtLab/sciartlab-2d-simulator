@@ -108,11 +108,11 @@ public class GameUtils {
 
     static Boolean thereIsNotObstacle(Screen screen, float x, float y){
         if(screen.objects != null) {
-            for(ScreenObject object : screen.objects){
-                if((x >= object.x && x <= object.x+object.width &&
-                y >= object.y && y <= object.y+object.height))
-                    return false
-            }
+            //            for(ScreenObject object : screen.objects){
+            //                if((x >= object.x && x <= object.x+object.width &&
+            //                y >= object.y && y <= object.y+object.height))
+            //                    return false
+            //            }
         }
 
         return true
