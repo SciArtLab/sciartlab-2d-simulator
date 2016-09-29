@@ -1,12 +1,15 @@
 package com.xmunch.game.model
 
 import processing.core.PApplet
+import processing.core.PImage
 
 import com.xmunch.game.Constants
 
 public class Screen extends PObject {
 
     protected int red = 0, green = 0, blue = 0
+
+    Map<String, PImage> images = new HashMap<String, PImage>()
 
     ArrayList<Agent> agents = new ArrayList<Agent>()
     ArrayList<Agent> agentsToAdd = new ArrayList<Agent>()

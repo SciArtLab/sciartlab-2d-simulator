@@ -7,7 +7,7 @@ class Constants {
     public final static int HEIGHT = 700
     public final static int WIDTH = 700
     public final static int ELEMENT_SIZE = 100
-    public final static float FRAME_RATE = 10
+    public final static float FRAME_RATE = 60
     public final static DEFAULT_CUR_MSG = "..."
     public final static CELL_SIZE = ELEMENT_SIZE
 
@@ -19,7 +19,7 @@ class Constants {
     public final static int AGENT_SPEED = ELEMENT_SIZE/10
     public final static int AGENT_WIDTH = ELEMENT_SIZE/2
     public final static int AGENT_HEIGHT = ELEMENT_SIZE/2
-    public final static int AGENTS_NUMBER = 25
+    public final static int AGENTS_NUMBER = 200
     public final static float NEIGHBOR_DISTANCE = 3*ELEMENT_SIZE
     public final static String DEFAULT_AGENT_TYPE = "ant"
     public final static String DEFAULT_AGENT_STATE =  "UP"
@@ -29,7 +29,7 @@ class Constants {
     //Objects configuration
     public final static int OBJECT_WIDTH = ELEMENT_SIZE/2
     public final static int OBJECT_HEIGHT = ELEMENT_SIZE/2
-    public final static int OBJECTS_NUMBER = 30
+    public final static int OBJECTS_NUMBER = 20
     public final static String DEFAULT_OBJECT_TYPE = "stone"
     public final static String DEFAULT_OBJECT_STATE =  "STATIC"
     public final static String OBJECT_SPRITES_FOLDER = "images/object/"
