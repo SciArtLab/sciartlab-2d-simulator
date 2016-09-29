@@ -5,6 +5,7 @@ import processing.core.PImage
 import com.xmunch.game.Constants
 import com.xmunch.game.model.Agent
 import com.xmunch.game.model.Player
+import com.xmunch.game.model.Screen
 import com.xmunch.game.model.ScreenObject
 
 public class GameUtils {
@@ -99,5 +100,19 @@ public class GameUtils {
                 screenObject.game.ellipse(screenObject.getCenterX(), screenObject.getCenterY(), 3, 3)
             }
         }
+    }
+
+    static Boolean thereIsNotObstacle(Agent agent, x, y){
+        return thereIsNotObstacle(agent.global.screens.get(agent.global.currentScreen), (float)x, (float)y)
+    }
+
+    static Boolean thereIsNotObstacle(Screen screen, float x, float y){
+        for(ScreenObject object : screen.objects){
+            if((x >= object.x && x <= object.x+object.width &&
+            y >= object.y && y <= object.y+object.height))
+                return false
+        }
+
+        return true
     }
 }
