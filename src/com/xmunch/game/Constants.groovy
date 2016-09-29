@@ -29,7 +29,7 @@ class Constants {
     //Objects configuration
     public final static int OBJECT_WIDTH = ELEMENT_SIZE/2
     public final static int OBJECT_HEIGHT = ELEMENT_SIZE/2
-    public final static int OBJECTS_NUMBER = 4
+    public final static int OBJECTS_NUMBER = 30
     public final static String DEFAULT_OBJECT_TYPE = "stone"
     public final static String DEFAULT_OBJECT_STATE =  "STATIC"
     public final static String OBJECT_SPRITES_FOLDER = "images/object/"
