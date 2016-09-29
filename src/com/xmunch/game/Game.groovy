@@ -5,6 +5,7 @@ import processing.core.PApplet
 class Game extends PApplet{
 
     GlobalSpace global
+    float fps
 
     static void main(String[] args){
         args = new String[1]

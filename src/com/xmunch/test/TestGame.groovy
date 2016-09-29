@@ -17,7 +17,8 @@ class TestGame extends Game{
 
     @Override
     void setup() {
-        frameRate(Constants.FRAME_RATE)
+        fps = Constants.FRAME_RATE
+        frameRate(fps)
         global = TestGlobalSpace.getInstance(this)
         smooth()
     }
@@ -54,15 +55,25 @@ class TestGame extends Game{
             global.setShowAgents (!global.getShowAgents())
         }else if(keyCode == Constants.KEY_S){
             global.setShowSprites(!global.getShowSprites())
-        }else if(keyCode == UP)
+        }else if(keyCode == UP){
             global.getPlayer().moveUp()
-        else if(keyCode == DOWN)
+        } else if(keyCode == DOWN){
             global.getPlayer().moveDown()
-        else if(keyCode == LEFT)
+        }else if(keyCode == LEFT){
             global.getPlayer().moveLeft()
-        else if(keyCode == RIGHT)
+        }else if(keyCode == RIGHT){
             global.getPlayer().moveRight()
-        else
+        } else if(keyCode == Constants.KEY_L){
+            if(fps > 5.0) {
+                fps = (float)(fps - 5.0)
+                frameRate(fps)
+            }
+            println fps
+        }else if(keyCode == Constants.KEY_M){
+            fps = (float) (fps + 5.0)
+            frameRate(fps)
+        }else{
             println("Se ha pulsado una tecla no mapeada: " +keyCode)
+        }
     }
 }
