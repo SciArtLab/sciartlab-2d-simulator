@@ -48,8 +48,6 @@ class Game extends PApplet{
     @Override
     void keyPressed() {
 
-        println keyCode
-
         if(keyCode == Constants.KEY_SPACE){
             global.setPaused(!global.getPaused())
         }else if(keyCode == Constants.KEY_G){
@@ -70,5 +68,7 @@ class Game extends PApplet{
             global.getPlayer().moveLeft()
         else if(keyCode == RIGHT)
             global.getPlayer().moveRight()
+        else
+            println("Se ha pulsado una tecla no mapeada: " +keyCode)
     }
 }

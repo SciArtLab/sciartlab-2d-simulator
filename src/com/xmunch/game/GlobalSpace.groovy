@@ -64,7 +64,6 @@ public class GlobalSpace {
 
     void drawNeighborsInfo(){
 
-        println "drawNeighborsInfo"
         for(Agent agent : globalSpace.getAgents()){
 
             if(globalSpace.getPlayer().isNeighbor(agent.getCenterX(), agent.getCenterY())){
