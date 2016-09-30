@@ -19,8 +19,13 @@ public class Screen extends PObject {
     ArrayList<ScreenObject> objectsToAdd = new ArrayList<ScreenObject>()
     ArrayList<ScreenObject> objectsToRemove = new ArrayList<ScreenObject>()
 
+    ArrayList<ScreenObject> backgroundObjects = new ArrayList<ScreenObject>()
+    ArrayList<ScreenObject> backgroundObjectsToAdd = new ArrayList<ScreenObject>()
+    ArrayList<ScreenObject> backgroundObjectsToRemove = new ArrayList<ScreenObject>()
+
     public Screen(){
         super()
+        setBackgroundObjects(createBackgroundObjects())
         setAgents(createAgents())
         setObjects(createObjects())
     }
@@ -31,18 +36,18 @@ public class Screen extends PObject {
 
     void draw() {
 
-        for(ScreenObject screenObject : getObjects())
-            screenObject.draw()
+        for(ScreenObject backgroundObject : getBackgroundObjects())
+            backgroundObject.draw()
 
-        for(ScreenObject screenObject : getObjectsToAdd())
-            getObjects().add(screenObject)
+        for(ScreenObject backgroundObject : getBackgroundObjectsToAdd())
+            getBackgroundObjects().add(backgroundObject)
 
-        objectsToAdd.clear()
+        backgroundObjectsToAdd.clear()
 
-        for(ScreenObject screenObject : getObjectsToRemove())
-            getObjects().remove(screenObject)
+        for(ScreenObject backgroundObject : getBackgroundObjectsToRemove())
+            getBackgroundObjects().remove(backgroundObject)
 
-        objectsToRemove.clear()
+        backgroundObjectsToRemove.clear()
 
         for(Agent agent : getAgents())
             agent.draw()
@@ -56,6 +61,19 @@ public class Screen extends PObject {
             getAgents().remove(agent)
 
         agentsToRemove.clear()
+
+        for(ScreenObject screenObject : getObjects())
+            screenObject.draw()
+
+        for(ScreenObject screenObject : getObjectsToAdd())
+            getObjects().add(screenObject)
+
+        objectsToAdd.clear()
+
+        for(ScreenObject screenObject : getObjectsToRemove())
+            getObjects().remove(screenObject)
+
+        objectsToRemove.clear()
 
         global.getPlayer().draw()
         global.getCursor().draw()
@@ -95,6 +113,18 @@ public class Screen extends PObject {
             ScreenObject screenObject = new ScreenObject()
             screenObjects.add(screenObject)
         }
+        return screenObjects
+    }
+
+    protected static ArrayList<ScreenObject> createBackgroundObjects(){
+        List<ScreenObject> screenObjects = new ArrayList<ScreenObject>()
+        for(i in 0..Constants.OBJECTS_NUMBER* 10){
+            ScreenObject screenObject = new ScreenObject("egg", "static")
+            screenObject.width = 5
+            screenObject.height = 5
+            screenObjects.add(screenObject)
+        }
+
         return screenObjects
     }
 }
