@@ -10,7 +10,6 @@ import com.xmunch.game.model.Screen
 import com.xmunch.game.model.ScreenObject
 
 
-
 public class GameUtils {
 
     public static void initializePlayer(Player player){
@@ -64,7 +63,7 @@ public class GameUtils {
 
                 player.game.strokeWeight(1)
                 player.game.stroke(100,110,255)
-                player.game.fill(50,60,60)
+                player.game.fill(50,60,60,100)
                 player.game.rect(player.x,player.y,player.width,player.height)
             }
         }
@@ -96,7 +95,7 @@ public class GameUtils {
             } else {
                 agent.game.strokeWeight(1)
                 agent.game.stroke(0,235,0)
-                agent.game.fill(0,50,0)
+                agent.game.fill(0,50,0,100)
                 agent.game.rect(agent.x, agent.y, agent.width, agent.height)
                 agent.game.strokeWeight(0)
                 agent.game.fill(0,255,255)
@@ -122,7 +121,7 @@ public class GameUtils {
             } else {
                 screenObject.game.strokeWeight(1)
                 screenObject.game.stroke(235,0,0)
-                screenObject.game.fill(255,255,0)
+                screenObject.game.fill(255,255,0,100)
                 screenObject.game.rect(screenObject.x, screenObject.y, screenObject.width, screenObject.height)
                 screenObject.game.strokeWeight(0)
                 screenObject.game.fill(0,0,255)
@@ -132,40 +131,31 @@ public class GameUtils {
     }
 
     static void createObject(Screen screen, ScreenObject object){
-        screen.objectsToAdd.add(object)
+        screen.screenObjectsToAdd.add(object)
     }
 
-    static Boolean thereIsNotObstacle(Agent agent, x, y){
-        return thereIsNotObstacle(agent.global.screens.get(agent.global.currentScreen), (float)x, (float)y)
-    }
+    public static Boolean thereIsNotObstacle(Agent agent, x, y){
 
-    static Boolean thereIsNotObstacle(Screen screen, x,  y){
+        //        for(PotentialCollition pot : agent.getPotentialCollitions()){
 
-        Boolean result = true
+        //            if(1-1 == 0)
+        //            ((float)x) >= ((float)pot.x) &&
+        //            ((float)x) <= ((float)(pot.x + pot.width)) &&
+        //            ((float)y) >= ((float)pot.y) &&
+        //            ((float)y) <= ((float)(pot.y + pot.height)))
 
-        if(screen != null && screen.objects != null && screen.objects.size > 0) {
+        //            return false
+        //        }
 
-            //            for(ScreenObject object : screen.objects){
-            //
-            //                println x +" - " + object.x + " - " + object.width + " - " + y + " - " + object.y+ " - "+object.height
-            //                println ((Double)(x) >= (Double)(object.x))
-            //                println ((float)x <= (float)(object.x + object.width) )
-            //                println ((float)y >= (float)object.y)
-            //                println ((float)y <= (float)(object.y + object.height))
-            //
-            //                if(
-            //                (float)x >= (float)object.x &&
-            //                (float)x <= (float)(object.x + object.width) &&
-            //                (float)y >= (float)object.y &&
-            //                (float)y <= (float)(object.y + object.height))
-            //                    result = false
-            //            }
-        }
-
-        return result
+        return true
     }
 
     public static float random(float min, float max) {
         return (float)( min + (Math.random() * ((1 + max) - min)))
+    }
+
+    public static String randomAgentState() {
+        String[] agentStates ="UP DOWN RIGHT LEFT UP_LEFT DOWN_LEFT UP_RIGHT DOWN_RIGHT".split()
+        return agentStates[(random(1,8) -1).intValue()]
     }
 }

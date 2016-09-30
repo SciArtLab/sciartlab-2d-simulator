@@ -14,6 +14,7 @@ public class GlobalSpace {
     boolean paused = false
     boolean isMouseClicked = false
     boolean showNeighborsInfo = false
+    boolean showObstaclesInfo = false
     boolean showAgents = true
     boolean showSprites = true
     boolean showGrid = false

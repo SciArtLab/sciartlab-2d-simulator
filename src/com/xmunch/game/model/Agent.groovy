@@ -10,6 +10,8 @@ import com.xmunch.game.utils.behavior.SensorBehaviorUtils
 public class Agent extends PObject {
 
     protected String type
+    Boolean collisionStatus = false
+    List<PotentialCollition> potentialCollitions
 
     public Agent(String type, String state){
         super()
@@ -29,6 +31,14 @@ public class Agent extends PObject {
         live()
     }
 
+    void resetPotentialCollitions(){
+        potentialCollitions = new ArrayList<PotentialCollition>()
+    }
+
+    void addPotentialCollition(PotentialCollition collition){
+        potentialCollitions.add(collition)
+    }
+
     //Biological
 
     void live(){
@@ -42,6 +52,10 @@ public class Agent extends PObject {
     // Sensor
     boolean isNeighbor(float x, float y){
         return SensorBehaviorUtils.isNeighbor(this, x, y)
+    }
+
+    boolean isObstacle(float x, float y){
+        return SensorBehaviorUtils.isObstacle(this, x, y)
     }
 
     boolean isClickedByMouse()  {

@@ -21,6 +21,7 @@ class Constants {
     public final static int AGENT_HEIGHT = ELEMENT_SIZE/2
     public final static int AGENTS_NUMBER = 100
     public final static float NEIGHBOR_DISTANCE = 3*ELEMENT_SIZE
+    public final static float OBSTACLE_DISTANCE = ELEMENT_SIZE/2
     public final static String DEFAULT_AGENT_TYPE = "ant"
     public final static String DEFAULT_AGENT_STATE =  "UP"
     public final static String AGENT_SPRITES_FOLDER = "images/agent/"
@@ -41,6 +42,7 @@ class Constants {
     public final static KEY_A = 65
     public final static KEY_S = 83
     public final static KEY_B = 66
+    public final static KEY_O = 79
     public final static KEY_M = 77
     public final static KEY_L = 76
 

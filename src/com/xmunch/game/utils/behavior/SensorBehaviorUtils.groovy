@@ -12,6 +12,12 @@ public class SensorBehaviorUtils extends PObject {
         else return false
     }
 
+    static boolean isObstacle(Agent agent, float x, float y){
+        if(agent.game.dist(agent.centerX, agent.centerY, x, y) <= Constants.OBSTACLE_DISTANCE)
+            return true
+        else return false
+    }
+
 
     static boolean isClickedByMouse(Agent agent)  {
         return (agent.global.isMouseClicked && agent.game.mouseX >= agent.x && agent.game.mouseX <= agent.x+agent.width &&

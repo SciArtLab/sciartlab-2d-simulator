@@ -24,6 +24,16 @@ class PObject {
         global = GlobalSpace.getInstance()
     }
 
+    public Boolean isSituatedIn(float x, float y){
+        Boolean result = false
+        //TODO
+        //        ((float)x) >= ((float)this.x) &&
+        //        ((float)x) <= ((float)(this.x + this.width)) &&
+        //        ((float)y) >= ((float)this.y) &&
+        //        ((float)y) <= ((float)(this.y + this.height))
+        return result
+    }
+
     public float getCenterX(){
         return (float)(x+width/2)
     }

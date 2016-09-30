@@ -1,6 +1,5 @@
 package com.xmunch.game.model
 
-import processing.core.PApplet
 import processing.core.PImage
 
 import com.xmunch.game.Constants
@@ -15,9 +14,9 @@ public class Screen extends PObject {
     ArrayList<Agent> agentsToAdd = new ArrayList<Agent>()
     ArrayList<Agent> agentsToRemove = new ArrayList<Agent>()
 
-    ArrayList<ScreenObject> objects = new ArrayList<ScreenObject>()
-    ArrayList<ScreenObject> objectsToAdd = new ArrayList<ScreenObject>()
-    ArrayList<ScreenObject> objectsToRemove = new ArrayList<ScreenObject>()
+    ArrayList<ScreenObject> screenObjects = new ArrayList<ScreenObject>()
+    ArrayList<ScreenObject> screenObjectsToAdd = new ArrayList<ScreenObject>()
+    ArrayList<ScreenObject> screenObjectsToRemove = new ArrayList<ScreenObject>()
 
     ArrayList<ScreenObject> backgroundObjects = new ArrayList<ScreenObject>()
     ArrayList<ScreenObject> backgroundObjectsToAdd = new ArrayList<ScreenObject>()
@@ -27,7 +26,7 @@ public class Screen extends PObject {
         super()
         setBackgroundObjects(createBackgroundObjects())
         setAgents(createAgents())
-        setObjects(createObjects())
+        setScreenObjects(createScreenObjects())
     }
 
     void setup(){
@@ -62,24 +61,32 @@ public class Screen extends PObject {
 
         agentsToRemove.clear()
 
-        for(ScreenObject screenObject : getObjects())
+        for(ScreenObject screenObject : getScreenObjects())
             screenObject.draw()
 
-        for(ScreenObject screenObject : getObjectsToAdd())
-            getObjects().add(screenObject)
+        for(ScreenObject screenObject : getScreenObjectsToAdd())
+            getScreenObjects().add(screenObject)
 
-        objectsToAdd.clear()
+        screenObjectsToAdd.clear()
 
-        for(ScreenObject screenObject : getObjectsToRemove())
-            getObjects().remove(screenObject)
+        for(ScreenObject screenObject : getScreenObjectsToRemove())
+            getScreenObjects().remove(screenObject)
 
-        objectsToRemove.clear()
+        screenObjectsToRemove.clear()
 
         global.getPlayer().draw()
         global.getCursor().draw()
 
         if(global.getShowNeighborsInfo())
             drawNeighborsInfo()
+
+        // else calculateSocialInfo
+
+        if(global.getShowObstaclesInfo())
+            drawObstaclesInfo()
+        else {
+            calculateObstaclesInfo()
+        }
     }
 
     void drawNeighborsInfo(){
@@ -91,10 +98,73 @@ public class Screen extends PObject {
                 global.getGame().stroke(255, 100, 100)
             } else {
                 global.getGame().strokeWeight(0.5)
-                global.getGame().stroke(global.getGame().random(0,255),global.getGame().random(200,255),global.getGame().random(200,255))
+                global.getGame().stroke(0, 255, 255)
             }
 
             global.getGame().line(agent.getCenterX(), agent.getCenterY(), global.getPlayer().getCenterX(), global.getPlayer().getCenterY())
+        }
+    }
+
+    void calculateObstaclesInfo(){
+
+        global.player.resetPotentialCollitions()
+
+        for(Agent agent : getAgents())
+            agent.resetPotentialCollitions()
+
+        for(ScreenObject object : getScreenObjects()){
+
+            if(global.player.isObstacle(object.getCenterX(), object.getCenterY())){
+                global.player.addPotentialCollition(new PotentialCollition(object.getX(), object.getY(), object.getWidth(), object.getHeight()))
+            }
+
+            for(Agent agent : getAgents()){
+                if(agent.isObstacle(object.getCenterX(), object.getCenterY())){
+
+                    PotentialCollition potentialCollition = new PotentialCollition(object.getX(), object.getY(), object.getWidth(), object.getHeight())
+                    agent.addPotentialCollition(potentialCollition)
+                }
+            }
+        }
+    }
+
+    void drawObstaclesInfo(){
+
+        global.player.resetPotentialCollitions()
+
+        for(Agent agent : getAgents())
+            agent.resetPotentialCollitions()
+
+        for(ScreenObject object : getScreenObjects()){
+
+
+            if(global.player.isObstacle(object.getCenterX(), object.getCenterY())){
+                global.getGame().fill(255,0,0,150)
+                global.getGame().strokeWeight(1)
+                global.getGame().ellipse(global.player.getCenterX(), global.player.getCenterY(), Constants.OBSTACLE_DISTANCE, Constants.OBSTACLE_DISTANCE)
+                global.getGame().strokeWeight(5)
+                global.getGame().stroke(0, 100, 200)
+                global.getGame().line(object.getCenterX(), object.getCenterY(), global.player.getCenterX(), global.player.getCenterY())
+                global.player.addPotentialCollition(new PotentialCollition(object.getX(), object.getY(), object.getWidth(), object.getHeight()))
+            }
+
+            for(Agent agent : getAgents()){
+                if(agent.isObstacle(object.getCenterX(), object.getCenterY())){
+                    global.getGame().fill(245,0,0,150)
+                    global.getGame().strokeWeight(1)
+                    global.getGame().ellipse(agent.getCenterX(), agent.getCenterY(), Constants.OBSTACLE_DISTANCE, Constants.OBSTACLE_DISTANCE)
+                    global.getGame().strokeWeight(5)
+                    global.getGame().stroke(255, 0, 30)
+                    global.getGame().line(object.getCenterX(), object.getCenterY(), agent.getCenterX(), agent.getCenterY())
+
+                    PotentialCollition potentialCollition = new PotentialCollition(object.getX(), object.getY(), object.getWidth(), object.getHeight())
+                    agent.addPotentialCollition(potentialCollition)
+
+                    global.getGame().strokeWeight(2)
+                    global.getGame().fill(255, 0, 100, 100)
+                    global.getGame().rect(potentialCollition.x, potentialCollition.y, potentialCollition.width, potentialCollition.height)
+                }
+            }
         }
     }
 
@@ -107,7 +177,7 @@ public class Screen extends PObject {
         return agents
     }
 
-    protected static ArrayList<ScreenObject> createObjects(){
+    protected static ArrayList<ScreenObject> createScreenObjects(){
         List<ScreenObject> screenObjects = new ArrayList<ScreenObject>()
         for(i in 0..Constants.OBJECTS_NUMBER){
             ScreenObject screenObject = new ScreenObject()

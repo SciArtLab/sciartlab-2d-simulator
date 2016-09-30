@@ -50,6 +50,8 @@ class TestGame extends Game{
             global.setShowGrid(!global.getShowGrid())
         }else if(keyCode == Constants.KEY_B){
             global.setShowBackground(!global.getShowBackground())
+        }else if(keyCode == Constants.KEY_O){
+            global.setShowObstaclesInfo(!global.getShowObstaclesInfo())
         }else if(keyCode == Constants.KEY_N){
             global.setShowNeighborsInfo(!global.getShowNeighborsInfo())
         }else if(keyCode == Constants.KEY_A){

@@ -6,27 +6,111 @@ import com.xmunch.game.utils.GameUtils
 
 public class MotorBehaviorUtils  {
 
+    static void rotateRight45(Agent agent){
+        if(agent.state.equals("UP"))
+            agent.state = "UP_RIGHT"
+        if(agent.state.equals("UP_RIGHT"))
+            agent.state = "RIGHT"
+        if(agent.state.equals("RIGHT"))
+            agent.state = "DOWN_RIGHT"
+        else if(agent.state.equals("DOWN_RIGHT"))
+            agent.state = "DOWN"
+        else if(agent.state.equals("DOWN"))
+            agent.state = "DOWN_LEFT"
+        else if(agent.state.equals("DOWN_LEFT"))
+            agent.state = "LEFT"
+        else if(agent.state.equals("LEFT"))
+            agent.state = "UP_LEFT"
+        else if(agent.state.equals("UP_LEFT"))
+            agent.state = "UP"
+    }
+
+    static void rotateLeft45(Agent agent){
+        if(agent.state.equals("UP"))
+            agent.state = "UP_LEFT"
+        if(agent.state.equals("UP_LEFT"))
+            agent.state = "LEFT"
+        if(agent.state.equals("LEFT"))
+            agent.state = "DOWN_LEFT"
+        else if(agent.state.equals("DOWN_LEFT"))
+            agent.state = "DOWN"
+        else if(agent.state.equals("DOWN"))
+            agent.state = "DOWN_RIGHT"
+        else if(agent.state.equals("DOWN_RIGHT"))
+            agent.state = "RIGHT"
+        else if(agent.state.equals("RIGHT"))
+            agent.state = "UP_RIGHT"
+        else if(agent.state.equals("UP_RIGHT"))
+            agent.state = "UP"
+    }
+
+    static void rotateRight90(Agent agent){
+        if(agent.state.equals("UP"))
+            agent.state = "RIGHT"
+        if(agent.state.equals("UP_RIGHT"))
+            agent.state = "DOWN_RIGHT"
+        if(agent.state.equals("RIGHT"))
+            agent.state = "DOWN"
+        else if(agent.state.equals("DOWN_RIGHT"))
+            agent.state = "DOWN_LEFT"
+        else if(agent.state.equals("DOWN"))
+            agent.state = "LEFT"
+        else if(agent.state.equals("DOWN_LEFT"))
+            agent.state = "UP_LEFT"
+        else if(agent.state.equals("LEFT"))
+            agent.state = "UP"
+        else if(agent.state.equals("UP_LEFT"))
+            agent.state = "UP_RIGHT"
+    }
+
+    static void rotate180(Agent agent){
+        if(agent.state.equals("UP"))
+            agent.state = "DOWN"
+        if(agent.state.equals("UP_RIGHT"))
+            agent.state = "DOWN_LEFT"
+        if(agent.state.equals("RIGHT"))
+            agent.state = "LEFT"
+        else if(agent.state.equals("DOWN_RIGHT"))
+            agent.state = "UP_LEFT"
+        else if(agent.state.equals("DOWN"))
+            agent.state = "UP"
+        else if(agent.state.equals("DOWN_LEFT"))
+            agent.state = "UP_RIGHT"
+        else if(agent.state.equals("LEFT"))
+            agent.state = "RIGHT"
+        else if(agent.state.equals("UP_LEFT"))
+            agent.state = "DOWN_RIGHT"
+    }
+
+    static void moveAhead(Agent agent){
+        if(agent.state.equals("UP"))
+            agent.moveUp()
+        if(agent.state.equals("UP_RIGHT"))
+            agent.moveRightUp()
+        if(agent.state.equals("RIGHT"))
+            agent.moveRight()
+        else if(agent.state.equals("DOWN_RIGHT"))
+            agent.moveRightDown()
+        else if(agent.state.equals("DOWN"))
+            agent.moveDown()
+        else if(agent.state.equals("DOWN_LEFT"))
+            agent.moveLeftDown()
+        else if(agent.state.equals("LEFT"))
+            agent.moveLeft()
+        else if(agent.state.equals("UP_LEFT"))
+            agent.moveLeftUp()
+    }
+
     static void moveRandomly(Agent agent){
         def movement = agent.game.random(0,100)
 
-        if(movement <= 30)
-            agent.moveUp()
-        else if(movement <= 5)
-            agent.moveLeftUp()
-        else if(movement <= 40)
-            agent.moveLeftDown()
-        else
-        if(movement <= 45)
-            agent.moveDown()
-        else  if(movement <= 60)
-            agent.moveLeft()
-        else if(movement <= 65)
-            agent.moveRightUp()
-        else if(movement <= 100)
-            agent.moveRightDown()
-        else
-        if(movement <= 70)
-            agent.moveRight()
+        if(movement > 20 && movement < 25)
+            rotateRight45(agent)
+
+        else if(movement > 55 && movement < 60)
+            rotateLeft45(agent)
+
+        moveAhead(agent)
     }
 
     static void moveUp(Agent agent){
