@@ -14,4 +14,11 @@ public class PotentialCollition {
     public String toString(){
         return "x:"+x+" y:"+y+" width:"+width+" height:"+height
     }
+
+    public Boolean collide(referenceX, referenceY){
+        return (referenceX >= x) &&
+                (referenceX <= (x + width)) &&
+                (referenceY >= y) &&
+                (referenceY <= y + height)
+    }
 }

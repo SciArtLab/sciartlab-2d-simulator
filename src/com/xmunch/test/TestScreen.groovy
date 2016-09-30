@@ -30,7 +30,7 @@ public class TestScreen extends GridScreen {
     @Override
     protected static ArrayList<Agent> createAgents(){
         List<Agent> agents = new ArrayList<Agent>()
-        for(i in 0..50){
+        for(i in 0..200){
             Agent agent = new Agent()
             agent.tintR = GameUtils.random(100,255)
             agent.tintG = GameUtils.random(100,255)

@@ -6,6 +6,7 @@ import com.xmunch.game.Constants
 import com.xmunch.game.GlobalSpace
 import com.xmunch.game.model.Agent
 import com.xmunch.game.model.Player
+import com.xmunch.game.model.PotentialCollition
 import com.xmunch.game.model.Screen
 import com.xmunch.game.model.ScreenObject
 
@@ -136,16 +137,16 @@ public class GameUtils {
 
     public static Boolean thereIsNotObstacle(Agent agent, x, y){
 
-        //        for(PotentialCollition pot : agent.getPotentialCollitions()){
+        for(PotentialCollition pot : agent.getPotentialCollitions()){
+            try{
+                if(pot.collide(x,y)) return false
+            } catch(Throwable e){
+                e.printEnclosedStackTrace()
+            }
 
-        //            if(1-1 == 0)
-        //            ((float)x) >= ((float)pot.x) &&
-        //            ((float)x) <= ((float)(pot.x + pot.width)) &&
-        //            ((float)y) >= ((float)pot.y) &&
-        //            ((float)y) <= ((float)(pot.y + pot.height)))
 
-        //            return false
-        //        }
+            //            return false
+        }
 
         return true
     }
