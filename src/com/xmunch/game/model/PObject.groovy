@@ -10,6 +10,10 @@ class PObject {
     long id
     String name
     String state
+    float alpha = 255
+    float tintR = 255
+    float tintG = 255
+    float tintB = 255
     int animationFrame = 0
     PApplet game
     GlobalSpace global

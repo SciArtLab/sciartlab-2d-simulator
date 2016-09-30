@@ -57,7 +57,9 @@ public class GameUtils {
                 if(getImage(player.global, image) == null)
                     setImage(player.global, image)
 
+                player.game.tint(player.tintR, player.tintG, player.tintB, player.alpha)
                 player.global.getGame().image(getImage(player.global, image), player.x, player.y, player.width, player.height)
+                player.game.tint(255)
             } else {
 
                 player.game.strokeWeight(1)
@@ -88,7 +90,9 @@ public class GameUtils {
                 if(getImage(agent.global, image) == null)
                     setImage(agent.global, image)
 
+                agent.game.tint(agent.tintR, agent.tintG, agent.tintB,, agent.alpha)
                 agent.game.image(getImage(agent.global, image) , agent.x, agent.y, agent.width, agent.height)
+                agent.game.tint(255)
             } else {
                 agent.game.strokeWeight(1)
                 agent.game.stroke(0,235,0)
@@ -111,7 +115,10 @@ public class GameUtils {
 
                 if(getImage(screenObject.global, image) == null)
                     setImage(screenObject.global, image)
+
+                screenObject.game.tint(screenObject.tintR, screenObject.tintG, screenObject.tintB,, screenObject.alpha)
                 screenObject.game.image(getImage(screenObject.global, image), screenObject.x, screenObject.y, screenObject.width, screenObject.height)
+                screenObject.game.tint(255)
             } else {
                 screenObject.game.strokeWeight(1)
                 screenObject.game.stroke(235,0,0)
