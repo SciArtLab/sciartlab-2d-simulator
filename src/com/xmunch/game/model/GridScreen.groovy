@@ -6,7 +6,7 @@ import com.xmunch.game.utils.GameUtils
 
 public class GridScreen extends Screen {
 
-    protected final String backgroundImage
+    String backgroundImage
 
     public GridScreen(){
         super()
@@ -16,6 +16,7 @@ public class GridScreen extends Screen {
         super()
         this.backgroundImage = backgroundImage
     }
+
 
     @Override
     void setup(){

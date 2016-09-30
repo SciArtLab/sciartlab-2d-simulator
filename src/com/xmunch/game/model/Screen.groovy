@@ -117,14 +117,14 @@ public class Screen extends PObject {
     }
 
     protected static ArrayList<ScreenObject> createBackgroundObjects(){
-        List<ScreenObject> screenObjects = new ArrayList<ScreenObject>()
+        List<ScreenObject> backgroundObjects = new ArrayList<ScreenObject>()
         for(i in 0..Constants.OBJECTS_NUMBER* 10){
             ScreenObject screenObject = new ScreenObject("egg", "static")
             screenObject.width = 5
             screenObject.height = 5
-            screenObjects.add(screenObject)
+            backgroundObjects.add(screenObject)
         }
 
-        return screenObjects
+        return backgroundObjects
     }
 }

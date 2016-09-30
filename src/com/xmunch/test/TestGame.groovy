@@ -37,6 +37,7 @@ class TestGame extends Game{
             GameUtils.createObject(global.getScreens().get(global.currentScreen), egg)
         }
 
+
         //fill(153);rect(30, 20, 55, 55)
     }
 

@@ -164,4 +164,8 @@ public class GameUtils {
 
         return result
     }
+
+    public static float random(float min, float max) {
+        return (float)( min + (Math.random() * ((1 + max) - min)))
+    }
 }

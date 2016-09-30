@@ -9,23 +9,23 @@ public class MotorBehaviorUtils  {
     static void moveRandomly(Agent agent){
         def movement = agent.game.random(0,100)
 
-        if(movement <= 10)
+        if(movement <= 30)
             agent.moveUp()
-        else if(movement <= 25)
+        else if(movement <= 5)
             agent.moveLeftUp()
-        else if(movement <= 35)
+        else if(movement <= 40)
             agent.moveLeftDown()
         else
         if(movement <= 45)
             agent.moveDown()
-        else  if(movement <= 55)
+        else  if(movement <= 60)
             agent.moveLeft()
         else if(movement <= 65)
             agent.moveRightUp()
-        else if(movement <= 85)
+        else if(movement <= 100)
             agent.moveRightDown()
         else
-        if(movement <= 100)
+        if(movement <= 70)
             agent.moveRight()
     }
 
