@@ -30,7 +30,7 @@ public class TestScreen extends GridScreen {
     @Override
     protected static ArrayList<Agent> createAgents(){
         List<Agent> agents = new ArrayList<Agent>()
-        for(i in 0..200){
+        for(i in 0..50){
             Agent agent = new Agent()
             agent.tintR = GameUtils.random(100,255)
             agent.tintG = GameUtils.random(100,255)
@@ -60,7 +60,25 @@ public class TestScreen extends GridScreen {
     @Override
     protected static ArrayList<ScreenObject> createScreenObjects(){
         List<ScreenObject> screenObjects = new ArrayList<ScreenObject>()
-        for(i in 0..100){
+
+        for(i in 0..1){
+            ScreenObject screenObject = new ScreenObject("waterhole", "static")
+            float randomSize = GameUtils.random(0.1,0.3)
+            screenObject.width = screenObject.width * randomSize
+            screenObject.height = screenObject.height * randomSize
+
+            if(screenObject.width+ screenObject.x >screenObject.getGame().width){
+                println "Fuera de area: x"
+                screenObject.x = 10
+            }
+            if(screenObject.height+ screenObject.y >screenObject.getGame().height){
+                println "Fuera de area: y"
+                screenObject.y = 10
+            }
+            screenObjects.add(screenObject)
+        }
+
+        for(i in 0..20){
             ScreenObject screenObject = new ScreenObject()
             float randomSize = GameUtils.random(0.1,0.3)
             screenObject.width = screenObject.width * randomSize
@@ -76,13 +94,17 @@ public class TestScreen extends GridScreen {
             }
             screenObjects.add(screenObject)
         }
+
+
+
+
         return screenObjects
     }
 
     @Override
     protected static ArrayList<ScreenObject> createBackgroundObjects(){
         List<ScreenObject> backgoundObjects = new ArrayList<ScreenObject>()
-        for(i in 0..1000){
+        for(i in 0..100){
             ScreenObject screenObject = new ScreenObject("egg", "static")
             screenObject.width = 5
             screenObject.height = 5
