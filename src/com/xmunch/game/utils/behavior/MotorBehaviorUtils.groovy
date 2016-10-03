@@ -110,6 +110,9 @@ public class MotorBehaviorUtils  {
         else if(movement > 55 && movement < 60)
             rotateLeft45(agent)
 
+        else if (movement > 90 && movement < 95)
+            rotate180(agent)
+
         moveAhead(agent)
     }
 
