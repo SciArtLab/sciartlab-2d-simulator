@@ -1,4 +1,4 @@
-package com.xmunch.test
+package com.xmunch.test.maze
 
 import processing.core.PApplet
 

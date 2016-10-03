@@ -1,4 +1,4 @@
-package com.xmunch.test
+package com.xmunch.test.maze
 
 import processing.core.PApplet
 
@@ -11,7 +11,7 @@ class TestGame extends Game{
 
     static void main(String[] args){
         args = new String[1]
-        args[0]="com.xmunch.test.TestGame" //Important to change
+        args[0]="com.xmunch.test.maze.TestGame" //Important to change
         PApplet.main(args)
     }
 
@@ -21,6 +21,13 @@ class TestGame extends Game{
         frameRate(fps)
         global = TestGlobalSpace.getInstance(this)
         smooth()
+
+        global.setShowGrid(true)
+        global.setShowAgents(true)
+        global.setShowBackground(false)
+        global.setShowObstaclesInfo(true)
+        global.setShowNeighborsInfo(true)
+        global.setShowSprites(false)
     }
 
     @Override
@@ -29,11 +36,9 @@ class TestGame extends Game{
 
         // Example: Adding specific object on click
         if(mousePressed){
-            ScreenObject egg = new ScreenObject("egg","static")
+            ScreenObject egg = new ScreenObject()
             egg.x = mouseX
             egg.y = mouseY
-            egg.width = (float)(egg.width/5)
-            egg.height = (float)(egg.height/5)
             GameUtils.createObject(global.getScreens().get(global.currentScreen), egg)
         }
 
