@@ -31,14 +31,6 @@ public class Agent extends PObject {
         live()
     }
 
-    void resetPotentialCollitions(){
-        potentialCollitions = new ArrayList<PotentialCollition>()
-    }
-
-    void addPotentialCollition(PotentialCollition collition){
-        potentialCollitions.add(collition)
-    }
-
     //Biological
 
     void live(){
@@ -60,6 +52,14 @@ public class Agent extends PObject {
 
     boolean isClickedByMouse()  {
         return SensorBehaviorUtils.isClickedByMouse(this)
+    }
+
+    void resetPotentialCollitions(){
+        potentialCollitions = new ArrayList<PotentialCollition>()
+    }
+
+    void addPotentialCollition(PotentialCollition collition){
+        potentialCollitions.add(collition)
     }
 
     //Motor

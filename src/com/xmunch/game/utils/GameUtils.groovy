@@ -138,14 +138,8 @@ public class GameUtils {
     public static Boolean thereIsNotObstacle(Agent agent, x, y){
 
         for(PotentialCollition pot : agent.getPotentialCollitions()){
-            try{
-                if(pot.collide(x,y)) return false
-            } catch(Throwable e){
-                e.printEnclosedStackTrace()
-            }
-
-
-            //            return false
+            pot.collide(x,y)
+            if(pot.getCollide()) return false
         }
 
         return true
