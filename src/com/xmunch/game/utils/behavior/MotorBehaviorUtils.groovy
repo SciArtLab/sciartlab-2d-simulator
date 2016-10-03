@@ -123,7 +123,10 @@ public class MotorBehaviorUtils  {
             agent.animationFrame = agent.global.getAnimationFrame(2)
             agent.y = agent.y-agent.speed
         } else {
-            moveRightUp(agent)
+            if(agent.game.random(0,100) <= 50)
+                moveRightUp(agent)
+            else
+                moveLeftUp(agent)
         }
     }
 
@@ -134,7 +137,10 @@ public class MotorBehaviorUtils  {
             agent.animationFrame = agent.global.getAnimationFrame(2)
             agent.y = agent.y + agent.speed
         } else {
-            moveLeftDown(agent)
+            if(agent.game.random(0,100) <= 50)
+                moveLeftDown(agent)
+            else
+                moveRightDown(agent)
         }
     }
 
@@ -147,7 +153,10 @@ public class MotorBehaviorUtils  {
             agent.x = agent.x-agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
         } else {
-            moveUp(agent)
+            if(agent.game.random(0,100) <= 50)
+                moveLeft(agent)
+            else
+                moveUp(agent)
         }
     }
 
@@ -161,7 +170,10 @@ public class MotorBehaviorUtils  {
             agent.x = agent.x - agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
         } else {
-            moveLeft(agent)
+            if(agent.game.random(0,100) <= 50)
+                moveLeft(agent)
+            else
+                moveDown(agent)
         }
     }
 
@@ -174,7 +186,10 @@ public class MotorBehaviorUtils  {
             agent.x = agent.x+agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
         } else {
-            moveRight(agent)
+            if(agent.game.random(0,100) <= 50)
+                moveUp(agent)
+            else
+                moveRight(agent)
         }
     }
 
@@ -187,7 +202,10 @@ public class MotorBehaviorUtils  {
             agent.x = agent.x + agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
         } else {
-            moveDown(agent)
+            if(agent.game.random(0,100) <= 50)
+                moveRight(agent)
+            else
+                moveDown(agent)
         }
     }
 
@@ -198,7 +216,10 @@ public class MotorBehaviorUtils  {
             agent.x = agent.x-agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
         } else {
-            moveLeftUp(agent)
+            if(agent.game.random(0,100) <= 50)
+                moveLeftDown(agent)
+            else
+                moveLeftUp(agent)
         }
     }
 
@@ -209,7 +230,10 @@ public class MotorBehaviorUtils  {
             agent.x = agent.x+agent.speed
             agent.animationFrame = agent.global.getAnimationFrame(2)
         } else {
-            moveRightDown(agent)
+            if(agent.game.random(0,100) <= 50)
+                moveRightUp(agent)
+            else
+                moveRightDown(agent)
         }
     }
 }
