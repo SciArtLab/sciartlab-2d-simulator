@@ -9,7 +9,7 @@ class TestGame extends Game{
 
     static void main(String[] args){
         args = new String[1]
-        args[0]="com.xmunch.test.network.TestGame" //Important to change
+        args[0]="com.xmunch.test.network.TestGame" // TO DO: Important to change
         PApplet.main(args)
     }
 
