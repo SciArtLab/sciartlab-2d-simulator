@@ -47,9 +47,19 @@ class TestGame extends Game{
         if(keyCode == Constants.KEY_SPACE){
             global.setPaused(!global.getPaused())
         }else if(keyCode == Constants.KEY_G){
-            global.setShowGrid(!global.getShowGrid())
+            global.setShowGrid(false)
+            global.setShowAgents(true)
+            global.setShowBackground(true)
+            global.setShowObstaclesInfo(false)
+            global.setShowNeighborsInfo(false)
+            global.setShowSprites(true)
         }else if(keyCode == Constants.KEY_B){
-            global.setShowBackground(!global.getShowBackground())
+            global.setShowGrid(true)
+            global.setShowAgents(true)
+            global.setShowBackground(false)
+            global.setShowObstaclesInfo(true)
+            global.setShowNeighborsInfo(true)
+            global.setShowSprites(false)
         }else if(keyCode == Constants.KEY_O){
             global.setShowObstaclesInfo(!global.getShowObstaclesInfo())
         }else if(keyCode == Constants.KEY_N){
