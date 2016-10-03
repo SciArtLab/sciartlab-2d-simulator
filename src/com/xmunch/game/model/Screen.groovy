@@ -74,8 +74,10 @@ public class Screen extends PObject {
 
         screenObjectsToRemove.clear()
 
-        global.getPlayer().draw()
-        global.getCursor().draw()
+        if(global.getPlayer() != null){
+            global.getPlayer().draw()
+            global.getCursor().draw()
+        }
 
         if(global.getShowNeighborsInfo())
             drawNeighborsInfo()
@@ -91,30 +93,31 @@ public class Screen extends PObject {
 
     void drawNeighborsInfo(){
 
-        for(Agent agent : getAgents()){
+        for(Agent a : getAgents()){
 
-            if(global.getPlayer().isNeighbor(agent.getCenterX(), agent.getCenterY())){
-                global.getGame().strokeWeight(3)
-                global.getGame().stroke(255, 100, 100)
-            } else {
-                global.getGame().strokeWeight(0.5)
-                global.getGame().stroke(0, 255, 255)
+            for(Agent b : getAgents()){
+
+                if(a.isNeighbor(b.getCenterX(), b.getCenterY())){
+                    global.getGame().strokeWeight(1)
+                    global.getGame().stroke(255, 100, 100)
+
+                    global.getGame().line(a.getCenterX(), a.getCenterY(), b.getCenterX(), b.getCenterY())
+                }
             }
-
-            global.getGame().line(agent.getCenterX(), agent.getCenterY(), global.getPlayer().getCenterX(), global.getPlayer().getCenterY())
         }
     }
 
     void calculateObstaclesInfo(){
 
-        global.player.resetPotentialCollitions()
+        if(global.player != null)
+            global.player.resetPotentialCollitions()
 
         for(Agent agent : getAgents())
             agent.resetPotentialCollitions()
 
         for(ScreenObject object : getScreenObjects()){
 
-            if(global.player.isObstacle(object.getCenterX(), object.getCenterY())){
+            if(global.player != null && global.player.isObstacle(object.getCenterX(), object.getCenterY())){
                 global.player.addPotentialCollition(new PotentialCollition(object.getX(), object.getY(), object.getWidth(), object.getHeight()))
             }
 
@@ -130,7 +133,7 @@ public class Screen extends PObject {
 
     void drawObstaclesInfo(){
 
-        global.player.resetPotentialCollitions()
+        if(global.player != null) global.player.resetPotentialCollitions()
 
         for(Agent agent : getAgents())
             agent.resetPotentialCollitions()
@@ -138,7 +141,7 @@ public class Screen extends PObject {
         for(ScreenObject object : getScreenObjects()){
 
 
-            if(global.player.isObstacle(object.getCenterX(), object.getCenterY())){
+            if(global.player != null && global.player.isObstacle(object.getCenterX(), object.getCenterY())){
                 global.getGame().fill(255,0,0,150)
                 global.getGame().strokeWeight(1)
                 global.getGame().ellipse(global.player.getCenterX(), global.player.getCenterY(), Constants.OBSTACLE_DISTANCE, Constants.OBSTACLE_DISTANCE)
