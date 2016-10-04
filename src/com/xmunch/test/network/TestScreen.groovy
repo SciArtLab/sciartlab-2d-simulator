@@ -19,7 +19,6 @@ public class TestScreen extends GridScreen {
     }
 
     void setup(){
-        println "LLego"
         setBackgroundObjects(createBackgroundObjects())
         setAgents(createAgents())
         setScreenObjects(createScreenObjects())

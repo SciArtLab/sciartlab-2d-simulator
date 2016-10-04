@@ -32,7 +32,6 @@ class TestGame extends Game{
     void draw(){
         super.draw() //Do not remove
 
-        // Example: Adding specific object on click
         if(mousePressed){
             TestAgent agent = new TestAgent()
             agent.x = mouseX
