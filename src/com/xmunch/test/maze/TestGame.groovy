@@ -9,6 +9,8 @@ import com.xmunch.game.utils.GameUtils
 
 class TestGame extends Game{
 
+    //TODO: Working on example
+
     static void main(String[] args){
         args = new String[1]
         args[0]="com.xmunch.test.maze.TestGame" //Important to change
