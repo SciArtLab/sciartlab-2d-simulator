@@ -1,2 +1,3 @@
 # sciartlab-2d-simulator
 The SciArt 2D Simulator is a 2D Graphics Engine, an extensible tool for our research in both agent-based modeling, artificial life and generative art.  Our simulator is developed in Groovy, Java and Processing and it provides basic tools to model multi-agent systems, social behavior and emergent properties in digital environments. It will also serve as a support to our study of Self-Organized Linguistic Systems (SOLS) and will provide an easy way to develop from simple Turtle-like systems for educational purposes to complex P2P Social Dynamics.
+<a href="http://sciartlab.com">http://sciartlab.com</a>
